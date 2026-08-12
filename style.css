@@ -3731,29 +3731,81 @@ footer {
 
 }
 
-
-
-
-
 /* =========================================================
-   MOBILE RESPONSIVE FIX
+   FINAL RESPONSIVE FIX
+   Consolidated mobile / tablet rules
 ========================================================= */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+/* ---------------------------------------------------------
+   TABLET / SMALL LAPTOP
+--------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+
+    .nav-inner {
+        padding-inline: 24px;
+    }
+
+    .hero {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .section {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .hero-content {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(300px, .8fr);
+        gap: 40px;
+    }
+
+    .hero h1 {
+        font-size: clamp(55px, 8vw, 82px);
+    }
+
+    .about-grid {
+        gap: 35px;
+    }
+
+    .skills-grid,
+    .cert-grid,
+    .writeup-grid,
+    .project-grid,
+    .lab-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ---------------------------------------------------------
+   TABLET
+--------------------------------------------------------- */
 
 @media (max-width: 900px) {
 
     html {
-        scroll-padding-top: 75px;
+        scroll-padding-top: 70px;
     }
 
     .nav-inner {
         min-height: 68px;
-        padding: 0 18px;
-    }
-
-    .menu-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 0 20px;
     }
 
     nav {
@@ -3765,26 +3817,38 @@ footer {
         display: none;
         flex-direction: column;
         align-items: stretch;
+        gap: 2px;
 
-        padding: 12px;
+        padding: 10px;
 
         border: 1px solid var(--border);
-        background: rgba(2, 8, 5, .97);
+        background: rgba(2, 7, 4, .98);
 
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
 
-        box-shadow:
-            0 25px 60px rgba(0, 0, 0, .5);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, .45);
     }
 
     nav.open {
         display: flex;
+        animation: menuOpen .3s var(--ease);
+    }
+
+    @keyframes menuOpen {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .nav-link {
         width: 100%;
         padding: 13px 15px;
-
         font-size: 9px;
     }
 
@@ -3797,178 +3861,102 @@ footer {
         right: 15px;
     }
 
+    .menu-toggle {
+        display: grid;
+        place-items: center;
+    }
+
     .hero {
         min-height: auto;
-
-        padding:
-            110px
-            20px
-            70px;
+        padding-top: 115px;
+        padding-bottom: 70px;
     }
 
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 45px;
     }
 
-    .hero-left {
-        max-width: 100%;
-    }
-
-    .hero h1 {
-        font-size: clamp(52px, 15vw, 82px);
-        letter-spacing: -4px;
-    }
-
-    .hero h2 {
-        font-size: 16px;
-        line-height: 1.4;
-    }
-
-    .hero-description {
-        font-size: 13px;
-    }
-
-    .hero-buttons {
-        width: 100%;
-    }
-
-    .cyber-button {
-        flex: 1 1 180px;
-    }
-
-    .hero-status {
-        gap: 18px;
+    .hero-right {
+        order: -1;
     }
 
     .profile-terminal {
-        width: 100%;
-        max-width: 500px;
-
-        margin: 0 auto;
-
+        width: min(100%, 500px);
+        margin-inline: auto;
         transform: none;
     }
 
-    .profile-frame {
-        height: 480px;
-    }
-
-    .section {
-        padding:
-            85px
-            20px;
-    }
-
-    .section-heading {
-        margin-bottom: 38px;
-    }
-
-    .section-heading h2 {
-        font-size: clamp(36px, 11vw, 55px);
-        letter-spacing: -2px;
-    }
-
-    .about-grid {
+    .about-grid,
+    .booking-layout {
         grid-template-columns: 1fr;
-        gap: 35px;
-    }
-
-    .about-stats {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .skills-grid,
-    .project-grid,
-    .cert-grid,
-    .writeup-grid {
-        grid-template-columns: repeat(2, 1fr);
+        gap: 45px;
     }
 
     .featured-project {
         grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 20px;
     }
 
-    .project-screen {
-        min-height: 300px;
-        padding: 25px;
+    .contact-data {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .lab-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .booking-layout {
-        grid-template-columns: 1fr;
+    .footer-inner {
+        flex-wrap: wrap;
     }
 }
 
-
-/* =========================================================
-   SMALL PHONE
-========================================================= */
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
 
 @media (max-width: 600px) {
 
-    body {
-        overflow-x: hidden;
-    }
-
-    .nav-inner {
-        padding: 0 15px;
-    }
-
-    .logo {
-        font-size: 16px;
-        letter-spacing: 1.5px;
+    .section {
+        width: 100%;
+        padding: 70px 16px;
     }
 
     .hero {
-        padding:
-            100px
-            16px
-            60px;
+        width: 100%;
+        padding: 100px 16px 60px;
     }
 
     .hero-content {
-        gap: 40px;
+        gap: 38px;
+    }
+
+    .hero-left {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(48px, 16vw, 72px);
+        letter-spacing: -4px;
+        line-height: .92;
+    }
+
+    .hero h2 {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .hero-description {
+        font-size: 12px;
+        line-height: 1.7;
     }
 
     .terminal-label {
         max-width: 100%;
-
         padding: 7px 10px;
-
         font-size: 7px;
         letter-spacing: 1px;
     }
 
     .hero-command {
         font-size: 9px;
-    }
-
-    .hero h1 {
-        margin-top: 15px;
-
-        font-size: clamp(48px, 17vw, 72px);
-
-        letter-spacing: -4px;
-        line-height: .92;
-    }
-
-    .hero h2 {
-        margin-top: 20px;
-
-        font-size: 14px;
-    }
-
-    .hero-description {
-        margin-top: 16px;
-
-        font-size: 12px;
-        line-height: 1.7;
+        overflow-wrap: anywhere;
     }
 
     .hero-tags {
@@ -3980,73 +3968,66 @@ footer {
         font-size: 7px;
     }
 
-    .hero-buttons {
-        flex-direction: column;
+    .hero-buttons,
+    .project-buttons,
+    .contact-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
     }
 
     .cyber-button {
         width: 100%;
         min-height: 48px;
+        padding-inline: 15px;
+        gap: 12px;
+        font-size: 8px;
     }
 
     .hero-status {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 15px;
-
         margin-top: 32px;
     }
 
     .profile-terminal {
-        transform: none;
-    }
-
-    .terminal-header {
-        min-height: 40px;
-
-        padding: 0 10px;
-
-        font-size: 7px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        transform: none !important;
     }
 
     .profile-container {
+        width: 100%;
         padding: 12px;
     }
 
     .profile-frame {
+        width: 100%;
         height: 420px;
     }
 
     .scan-line {
         left: 12px;
         right: 12px;
-        top: 12px;
     }
 
     .profile-label {
-        left: 25px;
-        bottom: 25px;
-
+        left: 24px;
+        bottom: 24px;
         max-width: 50%;
     }
 
     .profile-label strong {
         font-size: 12px;
-        letter-spacing: 1px;
     }
 
     .security-badge {
-        right: 20px;
-        bottom: 20px;
-
+        right: 18px;
+        bottom: 18px;
         max-width: 45%;
-
-        padding: 7px;
-    }
-
-    .badge-symbol {
-        font-size: 16px;
+        padding: 7px 8px;
     }
 
     .security-badge strong {
@@ -4057,22 +4038,22 @@ footer {
         font-size: 5px;
     }
 
+    .terminal-header,
     .terminal-footer {
-        padding: 0 10px;
+        padding-inline: 10px;
+    }
+
+    .terminal-header {
+        min-height: 40px;
+        font-size: 7px;
+    }
+
+    .terminal-footer {
         font-size: 6px;
     }
 
-
-    /* Sections */
-
-    .section {
-        padding:
-            70px
-            16px;
-    }
-
     .section-heading {
-        margin-bottom: 30px;
+        margin-bottom: 32px;
     }
 
     .section-number,
@@ -4082,8 +4063,7 @@ footer {
     }
 
     .section-heading h2 {
-        font-size: clamp(34px, 12vw, 50px);
-
+        font-size: clamp(34px, 11vw, 50px);
         letter-spacing: -2px;
     }
 
@@ -4092,20 +4072,23 @@ footer {
         line-height: 1.7;
     }
 
-
-    /* About */
-
     .about-grid {
+        width: 100%;
         gap: 25px;
+    }
+
+    .about-terminal,
+    .about-content {
+        width: 100%;
+        min-width: 0;
     }
 
     .terminal-body {
         min-height: auto;
-
         padding: 20px;
-
         font-size: 9px;
         line-height: 1.7;
+        overflow-wrap: anywhere;
     }
 
     .about-content h3 {
@@ -4121,20 +4104,23 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .stat-card {
-        padding: 15px;
-    }
-
-
-    /* Cards */
-
     .skills-grid,
     .project-grid,
     .cert-grid,
     .writeup-grid,
     .lab-grid {
         grid-template-columns: 1fr;
+        width: 100%;
         gap: 12px;
+    }
+
+    .skill-card,
+    .project-card,
+    .cert-card,
+    .writeup-card,
+    .lab-card {
+        width: 100%;
+        min-width: 0;
     }
 
     .skill-card {
@@ -4167,21 +4153,16 @@ footer {
         padding: 22px;
     }
 
-
-    /* Featured Project */
-
     .featured-project {
+        width: 100%;
         padding: 14px;
         gap: 22px;
     }
 
     .project-screen {
         min-height: 260px;
-
         padding: 20px;
-
         flex-direction: column;
-
         gap: 25px;
     }
 
@@ -4208,26 +4189,16 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .project-buttons {
-        flex-direction: column;
-    }
-
-    .project-buttons .cyber-button {
-        width: 100%;
-    }
-
-
-    /* Cyber Lab */
-
     .cyber-terminal {
+        width: 100%;
         overflow: hidden;
     }
 
     .terminal-console {
         padding: 18px;
-
         font-size: 8px;
         line-height: 1.7;
+        overflow-x: auto;
     }
 
     .console-line,
@@ -4237,36 +4208,94 @@ footer {
     }
 
     .scan-output {
-        padding: 10px;
+        max-width: 100%;
+        overflow-x: auto;
     }
 
     .scan-output p {
         grid-template-columns: 70px 70px minmax(0, 1fr);
-
         font-size: 7px;
+        min-width: 220px;
     }
 
+    .booking-form {
+        width: 100%;
+        padding: 18px;
+    }
 
-    /* Buttons */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 
-    .cyber-button {
-        padding: 0 15px;
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        min-width: 0;
+    }
 
-        gap: 12px;
+    .booking-success {
+        padding-inline: 10px;
+    }
 
-        font-size: 8px;
+    .success-terminal {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .contact-box {
+        width: 100%;
+        padding: 28px 15px;
+    }
+
+    .contact-terminal {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .contact-terminal-body {
+        padding: 20px;
+        font-size: 9px;
+    }
+
+    .contact-data {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-inline: 16px;
+    }
+
+    .footer-links {
+        gap: 10px;
     }
 }
 
-
-/* =========================================================
+/* ---------------------------------------------------------
    VERY SMALL PHONES
-========================================================= */
+--------------------------------------------------------- */
 
 @media (max-width: 380px) {
 
+    .nav-inner {
+        padding-inline: 12px;
+    }
+
+    .logo {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .hero,
+    .section {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
     .hero h1 {
-        font-size: 47px;
+        font-size: 46px;
         letter-spacing: -3px;
     }
 
@@ -4278,14 +4307,14 @@ footer {
         height: 380px;
     }
 
-    .profile-label {
-        left: 20px;
-        bottom: 20px;
+    .security-badge {
+        display: none;
     }
 
-    .security-badge {
-        right: 15px;
-        bottom: 15px;
+    .profile-label {
+        left: 18px;
+        bottom: 18px;
+        max-width: 70%;
     }
 
     .project-screen {
@@ -4300,286 +4329,34 @@ footer {
     .section-heading h2 {
         font-size: 34px;
     }
-}
 
-/* =========================================================
-   MOBILE RESPONSIVE FIX
-========================================================= */
-
-@media screen and (max-width: 768px) {
-
-    html,
-    body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-
-    main {
-        width: 100%;
-    }
-
-    /* NAVBAR */
-
-    .nav-inner {
-        min-height: 58px;
-        padding: 0 14px;
-    }
-
-    .logo {
-        font-size: 12px;
-    }
-
-    nav {
-        display: none;
-    }
-
-    .menu-toggle {
-        display: grid;
-        place-items: center;
-    }
-
-
-    /* SECTIONS */
-
-    .section {
-        width: 100%;
-        max-width: 100%;
-        padding: 80px 16px;
-    }
-
-
-    /* HERO */
-
-    .hero {
-        width: 100%;
-        max-width: 100%;
-        min-height: auto;
-        padding: 100px 16px 60px;
-    }
-
-    .hero-content {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 35px;
-    }
-
-    .hero-left {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .hero h1 {
-        font-size: clamp(48px, 15vw, 75px);
-        letter-spacing: -4px;
-    }
-
-    .hero h2 {
-        font-size: 16px;
-    }
-
-    .hero-description {
-        font-size: 13px;
-    }
-
-
-    /* PROFILE */
-
-    .profile-terminal {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        transform: none;
-    }
-
-    .profile-container {
-        padding: 14px;
-    }
-
-    .profile-frame {
-        width: 100%;
-        height: 430px;
-    }
-
-
-    /* ABOUT */
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    .about-terminal,
-    .about-content {
-        width: 100%;
-    }
-
-    .terminal-body {
-        min-height: auto;
-        padding: 20px;
-    }
-
-
-    /* SKILLS */
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    .skill-card {
-        width: 100%;
-        min-height: 250px;
-    }
-
-
-    /* PROJECTS */
-
-    .featured-project {
-        grid-template-columns: 1fr;
-        width: 100%;
-        padding: 18px;
-    }
-
-    .project-screen {
-        min-height: 300px;
-        padding: 20px;
-        flex-direction: column;
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    .project-card {
-        width: 100%;
-    }
-
-
-    /* CYBER LAB */
-
-    .lab-grid {
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-    }
-
-    .lab-card {
-        width: 100%;
-    }
-
-
-    /* CERTIFICATIONS */
-
-    .cert-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    .cert-card {
-        width: 100%;
-    }
-
-
-    /* WRITEUPS */
-
-    .writeup-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    .writeup-card {
-        width: 100%;
-    }
-
-
-    /* BOOKING */
-
-    .booking-layout {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-
-    /* HEADINGS */
-
-    .section-heading h2 {
-        font-size: 40px;
-        letter-spacing: -2px;
-    }
-
-
-    /* BUTTONS */
-
-    .hero-buttons,
-    .project-buttons {
-        width: 100%;
-    }
-
-    .cyber-button {
-        min-height: 46px;
-    }
-
-
-    /* STATS */
-
-    .about-stats {
-        grid-template-columns: 1fr;
+    .terminal-body,
+    .terminal-console {
+        padding: 16px;
     }
 }
 
+/* ---------------------------------------------------------
+   REDUCED MOTION
+--------------------------------------------------------- */
 
-/* =========================================================
-   SMALL PHONES
-========================================================= */
+@media (prefers-reduced-motion: reduce) {
 
-@media screen and (max-width: 480px) {
-
-    .section {
-        padding-left: 12px;
-        padding-right: 12px;
+    html {
+        scroll-behavior: auto;
     }
 
-    .hero {
-        padding-left: 12px;
-        padding-right: 12px;
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
     }
 
-    .hero h1 {
-        font-size: 48px;
-        letter-spacing: -3px;
-    }
-
-    .profile-frame {
-        height: 420px;
-    }
-
-    .lab-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-heading h2 {
-        font-size: 34px;
-    }
-
-    .security-badge {
-        right: 20px;
-        bottom: 20px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .section,
-    .section > *,
-    .about-grid,
-    .skills-grid,
-    .project-grid,
-    .cert-grid,
-    .writeup-grid,
-    .lab-grid,
-    .featured-project {
-        width: 100% !important;
-        max-width: 100% !important;
+    .grid-lines,
+    .glow,
+    .particle {
+        animation: none !important;
     }
 }
