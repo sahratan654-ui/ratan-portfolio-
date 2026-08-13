@@ -1103,7 +1103,7 @@ main {
     display: block;
 
     object-fit: cover;
-    object-position: center;
+    object-position: center 5%;
 
     filter:
         saturate(.8)
@@ -4304,7 +4304,8 @@ canvas {
     }
 
     .profile-frame {
-        height: 380px;
+        aspect-ratio: 1 / 1;
+        height: auto;
     }
 
     .security-badge {
@@ -4393,4 +4394,12 @@ canvas {
         transform: none;
     }
 
+}
+
+@media screen and (max-width: 768px) {
+    .profile-frame {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1 !important;
+    }
 }
