@@ -4824,3 +4824,14 @@ canvas {
     text-align: center !important;
     display: block;
 }
+
+
+.certificate-image {
+    width: 100%;
+    max-width: 260px;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto 0;
+    border: 1px solid var(--border);
+}
