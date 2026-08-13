@@ -4335,7 +4335,6 @@ canvas {
         padding: 16px;
     }
 }
-
 /* ---------------------------------------------------------
    REDUCED MOTION
 --------------------------------------------------------- */
@@ -4346,7 +4345,7 @@ canvas {
         scroll-behavior: auto;
     }
 
-    *,
+    * ,
     *::before,
     *::after {
         animation-duration: .01ms !important;
@@ -4362,23 +4361,44 @@ canvas {
 }
 
 /* =========================================================
-   MOBILE PROFILE CENTER FIX
+   FINAL MOBILE PROFILE CENTER
 ========================================================= */
 
 @media screen and (max-width: 768px) {
 
+    .hero-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
     .hero-right {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        order: -1 !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+
+        padding: 0 !important;
+        margin: 0 auto !important;
     }
 
     .profile-terminal {
-        width: min(100%, 500px) !important;
+        display: block !important;
+
+        width: 90% !important;
         max-width: 500px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+
+        margin: 0 auto !important;
+        padding: 0 !important;
+
+        left: auto !important;
+        right: auto !important;
+
         transform: none !important;
     }
 
