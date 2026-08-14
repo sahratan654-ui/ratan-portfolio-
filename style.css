@@ -4835,3 +4835,16 @@ canvas {
     margin: 20px auto 0;
     border: 1px solid var(--border);
 }
+
+/* Keep animated name colors */
+h1.animated-name {
+    color: #f0fff7 !important;
+}
+
+h1.animated-name .name-white {
+    color: #f0fff7 !important;
+}
+
+h1.animated-name .name-green {
+    color: #00ff66 !important;
+}
